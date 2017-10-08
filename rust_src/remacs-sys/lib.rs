@@ -537,8 +537,8 @@ pub struct Lisp_Buffer {
     pub width_run_cache: *mut c_void,
     pub bidi_paragraph_cache: *mut c_void,
 
-    // XXX in C, bitfield with two bools
-    flags: u8,
+    pub prevent_redisplay_optimizations_p: BoolBF,
+    pub clip_changed: BoolBF,
 
     overlays_before: *mut c_void,
     overlays_after: *mut c_void,
@@ -1246,6 +1246,8 @@ extern "C" {
     pub fn window_box_left_offset(w: *const Lisp_Window, area: glyph_row_area) -> c_int;
     pub fn window_menu_bar_p(w: *const Lisp_Window) -> bool;
     pub fn window_tool_bar_p(w: *const Lisp_Window) -> bool;
+
+    pub fn bset_update_mode_line(buffer: *mut Lisp_Buffer) -> Lisp_Object;
 }
 
 /// Contains C definitions from the font.h header.

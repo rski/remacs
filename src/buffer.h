@@ -872,10 +872,10 @@ struct buffer
 
   /* Non-zero means disable redisplay optimizations when rebuilding the glyph
      matrices (but not when redrawing).  */
-  bool_bf prevent_redisplay_optimizations_p : 1;
+  bool_bf prevent_redisplay_optimizations_p;
 
   /* Non-zero whenever the narrowing is changed in this buffer.  */
-  bool_bf clip_changed : 1;
+  bool_bf clip_changed;
 
   /* List of overlays that end at or before the current center,
      in order of end-position.  */
