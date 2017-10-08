@@ -522,6 +522,8 @@ pub struct Lisp_Buffer {
     pub overlay_center: ptrdiff_t,
 
     pub undo_list: Lisp_Object,
+
+    pub prevent_redisplay_optimizations_p: bool,
 }
 
 /// Represents text contents of an Emacs buffer. For documentation see
@@ -1040,6 +1042,8 @@ extern "C" {
     ) -> ptrdiff_t;
 
     pub fn hash_remove_from_table(h: *mut Lisp_Hash_Table, key: Lisp_Object);
+
+    pub fn bset_update_mode_line(buffer: *const libc::c_void) -> Lisp_Object; // TODO: buffer*
 }
 
 /// Contains C definitions from the font.h header.

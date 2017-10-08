@@ -65,6 +65,7 @@ mod util;
 mod minibuf;
 mod cmds;
 mod data;
+mod xdisp;
 
 #[cfg(all(not(test), target_os = "macos"))]
 use alloc_unexecmacosx::OsxUnexecAlloc;
@@ -407,5 +408,6 @@ pub extern "C" fn rust_init_syms() {
         defsubr(&*threads::Sthread_name);
         defsubr(&*cmds::Sforward_point);
         defsubr(&*data::Sindirect_function);
+        defsubr(&*xdisp::Sset_buffer_redisplay);
     }
 }
